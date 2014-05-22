@@ -1,0 +1,26 @@
+修改进度：
+	2014-04-28
+	com.nostra13.universalimageloader.cache.disc
+	universalimageloader 下载网络图片
+	xml解析报错 内容存到字典中，实时更新字典表
+	
+	2014-04-27
+	1.完成post数据测试提交到ebest库
+	遗留问题：xml解析报错，juahya:attrKey="action_url" juahya:attrDescription="http://122.224.108.22:88/sfasync/post.aspx?user_code=1018754&pass=11111&version=V2&Gzip=0"
+	解析 attrDescription报错，初步判断//引起的
+	建议：xml问题替换成json array来解析，json比xml更具有兼容性，但是xml更具有直观性
+	下一步修改：导出jar包加密混淆，eBest兼容性修改
+
+防止反编译：
+http://wenku.baidu.com/link?url=opJzB_xrUZDYe-tTzmw994ytT-fa0TFcgiQAKnX1GAMl8FRukLevaxA4aQd1qgLanT__DoIPUQAm9w3u8G2jYMoESuGTDachAssXA5Wbpr_
+
+混淆加密：
+http://www.cnblogs.com/rayray/p/3421028.html
+
+	允许bat启动proguard客户端
+	Android\android-sdk\tools\proguard\bin>proguardgui.bat
+	
+	
+	
+	
+	

@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <TextView 
+        android:layout_width="fill_parent" android:gravity="right" android:layout_gravity="center"
+        android:layout_height="wrap_content" android:background="#e2e2e2"
+        android:text="abcssssssssssssss"  android:id="@+id/txt"
+         android:paddingTop="10dp" android:paddingBottom="10dp" 
+        />
+	<ImageView 
+        android:layout_width="fill_parent"  android:layout_gravity="center"
+        android:layout_height="wrap_content" android:src="@drawable/ic_launcher"
+        android:background="@android:drawable/bottom_bar"
+        />
+    <EditText android:layout_width="fill_parent" android:gravity="right" android:layout_gravity="center"
+        android:layout_height="wrap_content" android:background="#e2e2e2"
+        />
+    <!-- <com.juahya.guis.JTextView  android:layout_width="fill_parent" android:gravity="right" android:layout_gravity="center"
+        android:layout_height="wrap_content" android:background="#e2e2e2"
+        juahya:attrKey="posturl" juahya:attrDescription="www.baidu.com" android:hint=""
+        />
+    <com.juahya.guis.JEditText  android:layout_width="fill_parent" android:gravity="right" android:layout_gravity="center"
+        android:layout_height="wrap_content" android:background="#e2e2e2"
+        juahya:attrKey="name" juahya:attrDescription="www.baidu.com" 
+        />
+    <com.juahya.guis.JEditText  android:layout_width="fill_parent" android:gravity="right" android:layout_gravity="center"
+        android:layout_height="wrap_content" android:background="#e2e2e2"
+        juahya:attrKey="birthday" juahya:attrDescription="www.baidu.com" 
+        />
+    <com.juahya.guis.JEditText  android:layout_width="fill_parent" android:gravity="right" android:layout_gravity="center"
+        android:layout_height="wrap_content" android:background="#e2e2e2"
+        juahya:attrKey="sex" juahya:attrDescription="www.baidu.com" 
+        />
+ --></LinearLayout>

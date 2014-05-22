@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="DB_INSERT">"
+	    
+        
+        
+        ;#本地缓存;
+        CREATE TABLE  IF NOT EXISTS LocalCache(
+        	keys varchar PRIMARY KEY,
+        	value  varchar ,
+        	groups varchar
+        );
+        
+        
+		"</string>
+    <string name="DB_UPGRADE">
+        <!--
+			
+        ;#本地缓存;
+        CREATE TABLE  IF NOT EXISTS ConfigTables(
+            name varchar PRIMARY KEY,
+            lastUpdateTime  DATETIME ,
+            description varchar
+        );
+        ;#本地缓存;
+        CREATE TABLE  IF NOT EXISTS ConfigColumn(
+            columnname varchar ,
+            type  VARCHAR ,
+            configTableName  VARCHAR ,
+            description  VARCHAR ,
+            PRIMARY KEY(configTableName,columnname)
+        );
+        ;#本地缓存;
+        CREATE TABLE  IF NOT EXISTS CollectHead(
+            headID varchar PRIMARY KEY,
+            configTableName  VARCHAR ,
+            createtime  DATETIME ,
+            updatetime  DATETIME ,
+            record  VARCHAR ,
+            dirty int default 0
+        );
+        ;#本地缓存;
+        CREATE TABLE  IF NOT EXISTS CollectDetail(
+            collectDetailID varchar PRIMARY KEY,
+            configTableName  VARCHAR ,
+            value  VARCHAR ,
+            collectHeadID  VARCHAR ,
+            columnName  VARCHAR ,
+            dirty int default 0
+            
+        );
+        CREATE TABLE  IF NOT EXISTS LogTable(
+            collectHeadID varchar PRIMARY KEY,
+            status  VARCHAR ,
+            updatetime  VARCHAR ,
+            logName  VARCHAR 
+            
+        );
+
+		"
+        -->
+    </string>
+
+</resources>
