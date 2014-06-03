@@ -7,6 +7,11 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import com.android.apis.util.Debug;
+import com.nostra13.universalimageloader.cache.memory.MemoryCacheAware;
+import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.xml.inflate.factory.IFLalterSImpleLinearLayoutFactory;
 import com.xml.inflate.factory.IFlateInteface;
 import com.xml.inflate.inflater.IFlateViewAdapter;
@@ -14,6 +19,7 @@ import com.xml.inflate.inflater.IJuahya;
 import com.xml.inflate.inflater.IJuahyaLayoutInflateListener;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -29,6 +35,7 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 	}
 	@Override
 	public View inflate(String source,Context context) {
+		initImageLoader(context);
 		View layout=null;
 		try{  
 //			xpp.setInput( new StringReader ( ¡°xml string¡± ) );  
@@ -77,6 +84,7 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 					}else{
 //						((ViewGroup)layout).addView(view);
 						((ViewGroup)viewPre).addView(view,inflateCur.getParrentLayoutParams());
+						inflateCur.onFinishLayout(view);
 					}
 					break;
 				case XmlPullParser.END_TAG:
@@ -97,4 +105,30 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 	public void onJuahyaLayoutInflate(IJuahya ijuahya) {
 	}
 
+    public static void initImageLoader(Context context) {
+        int memoryCacheSize = (int) (Runtime.getRuntime().maxMemory() / 8);
+
+        MemoryCacheAware<String, Bitmap> memoryCache;
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+//            memoryCache = new LruMemoryCache(memoryCacheSize);
+//        } else {
+//        }
+        memoryCache = new LRULimitedMemoryCache(memoryCacheSize);
+
+        // This configuration tuning is custom. You can tune every option, you may tune some of them, 
+        // or you can create default configuration by
+        //  ImageLoaderConfiguration.createDefault(this);
+        // method.
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+                .threadPriority(Thread.NORM_PRIORITY - 2)
+                .memoryCache(memoryCache)
+                .denyCacheImageMultipleSizesInMemory()
+//                .discCacheFileNameGenerator(new Md5FileNameGenerator())
+                .tasksProcessingOrder(QueueProcessingType.LIFO)
+                .enableLogging() // Not necessary in common
+                .build();
+        // Initialize ImageLoader with configuration.
+        ImageLoader.getInstance().init(config);
+        
+    }
 }

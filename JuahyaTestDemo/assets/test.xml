@@ -30,7 +30,7 @@
 	<ImageView 
         android:layout_width="fill_parent"  android:layout_gravity="center"
         android:layout_height="wrap_content" android:src="@drawable/ic_launcher"
-        android:background="@android:drawable/bottom_bar"
+        android:background="@url/http://img.pconline.com.cn/images/upload/upc/tx/photoblog/1107/24/c3/8430239_8430239_1311504206062_mthumb.jpg"
         />
     <!-- <com.juahya.guis.JTextView  android:layout_width="wrap_content" android:gravity="right" android:layout_gravity="center"
         android:layout_height="wrap_content"  

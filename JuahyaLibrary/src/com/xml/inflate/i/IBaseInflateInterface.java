@@ -15,6 +15,7 @@ public interface IBaseInflateInterface {
 	 * */
 	View inflate(XmlPullParser parser,Context context,LayoutParams parrentParam);
 	void onFinishIFlate(View layout);
+	void onFinishLayout(View layout);
 	/**get this viewgroup 's layout param*/
 	LayoutParams getLayoutParams();
 	/**get parrent viewgroup layout */

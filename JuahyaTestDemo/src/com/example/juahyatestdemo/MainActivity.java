@@ -26,6 +26,10 @@ public class MainActivity extends PostJuahyaActivity {
 	public static String IPARAM_NAME="prase_name";
 	String name;
 	IFlateServicePoxy service;
+
+	/**测试是否测试本地xml解析*/
+	boolean testLocal=false;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +43,18 @@ public class MainActivity extends PostJuahyaActivity {
 		if(null==name||"".equals(name)){
 			name="test.xml";
 		}
-//		getNetStr("test.txt");
-		getNetStr(name);
 		
-//		View view=test();
-//		view=null;
-//		if(null!=view){
-//			setContentView(view);
-//		}else{
+		if(testLocal){
+			View view=test();
+//			view=null;
+			if(null!=view){
+				setContentView(view);
+			}
+		}else{
+			getNetStr(name);
+		}
+		
+//			else{
 //			setContentView(R.layout.activity_main);
 //			TextView tv = (TextView)findViewById(R.id.txt);
 //			String attrValue="@drawable/ic_launcher";

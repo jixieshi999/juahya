@@ -32,6 +32,9 @@ public  class IFlaterTools   {
 	/**
 	 * attr default String value mean nothing cannot be use*/
 	public static final String NONE_STRING="-123";
+	
+	/**need prase url*/
+	public static final int STATUS_NEED_URL=-124;
 
 	static float scale=NONE_FLOAT;
 	
@@ -58,6 +61,7 @@ public  class IFlaterTools   {
 	
 	
 	/**获取本地drawble
+	 * @return res id,if return IFlaterTools.STATUS_NEED_URL,then use getDrawableInternetto prase url;
 	 * */
 	public static int getDrawableLocal(String color,Context context){
 		String value=null;
@@ -70,13 +74,20 @@ public  class IFlaterTools   {
 			value = color.substring(18);
 			return context.getResources().getIdentifier("android:drawable/"+value, null,null);
 		}else if(color.startsWith("@url/")){
+			value = color.substring(5);
 			
 		}
 		return NONE_INT;
 	}
-	/**获取网络图片url*/
+	/**获取网络图片url
+	 * @return return url or null*/
 	public static String getDrawableInternet(String attr){
-		return NONE_STRING;
+		String value=null;
+		if(attr.startsWith("@url/")){
+			value = attr.substring(5);
+			return value;
+		}
+		return null;
 	}
 	/**获取字典数据*/
 	public static String getDictionaryLocal(String attr){

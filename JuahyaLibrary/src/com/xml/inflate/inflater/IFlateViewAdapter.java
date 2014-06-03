@@ -103,7 +103,7 @@ public abstract class IFlateViewAdapter implements IBaseInflateInterface {
 	
 	
 	Context context;
-	
+	public String imageuri=null;
 	@Override
 	public Context getContext() {
 		return context;
@@ -183,6 +183,8 @@ public abstract class IFlateViewAdapter implements IBaseInflateInterface {
 				}else if((NAMESPACE_ANDROID+":"+ATTRIBUTE_BACKGROUND).equals(attrName)){
 					if(attrValue.startsWith("#")){
 						backgroundColor=IFlaterTools.getBackgroundColor(attrValue,getContext());
+					}else if(attrValue.startsWith("@url/")){
+						imageuri=IFlaterTools.getDrawableInternet(attrValue);
 					}else{
 						background=IFlaterTools.getDrawableLocal(attrValue,getContext());
 					}
@@ -251,6 +253,9 @@ public abstract class IFlateViewAdapter implements IBaseInflateInterface {
 		return new View(context);
 	}
 	public abstract boolean inflate(String nameSpace,String attrName,String attrValue);
+	public void onFinishLayout(View layout){
+		
+	}
 	public void onFinishIFlate(View layout){
 		layout.setPadding(
 				paddingLeft==NONE_INT?0:paddingLeft, 
