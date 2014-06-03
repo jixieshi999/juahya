@@ -32,6 +32,24 @@ you can use juahya to prase your custom layout xml file from internet,sdcard,sql
         3.change your xml layout you can  see some of the things juahya used in his magic tricks
 eg file [test.xml](jixieshi999.github.io/ilife/juahya/test.xml)
 ###
+    <TextView  android:layout_weight="1"
+            android:layout_width="wrap_content" android:background="#e2e2c2"
+            android:layout_height="fill_parent" android:gravity="center" 
+            android:text="会员注册" />
+    <com.juahya.guis.JTextView  android:layout_width="200" android:gravity="center" android:layout_gravity="center"
+        android:layout_height="wrap_content" android:background="#e2eff2"
+        juahya:attrKey="action_save_upload"  android:text="保存"
+         android:paddingTop="10" android:paddingBottom="10" 
+        juahya:attrDescription="12331" 
+        android:id="12331" 
+        />
+    ...
+    <ImageView 
+        android:layout_width="wrap_content"  android:layout_gravity="center"
+        android:layout_height="wrap_content"  
+        android:background="@url/http://tupian.hbrc.com/joke/UpFilesnew/2012/6/23/201262303147971.jpg"
+        />
+###
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical" >
