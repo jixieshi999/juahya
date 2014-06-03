@@ -27,10 +27,30 @@
         />
     </LinearLayout>
     
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
+         
+	    <ImageView 
+	        android:layout_width="wrap_content"  android:layout_gravity="center"
+	        android:layout_height="wrap_content"  
+	        android:background="@url/http://tupian.hbrc.com/joke/UpFilesnew/2012/6/23/201262303147971.jpg"
+	        />
+	    <ImageView 
+	        android:layout_width="wrap_content"  android:layout_gravity="center"
+	        android:layout_height="wrap_content"  
+	        android:background="@url/http://jixieshi999.github.io/ilife/images/BigLogo.jpg"
+	        />
+    </LinearLayout>
 	<ImageView 
         android:layout_width="fill_parent"  android:layout_gravity="center"
-        android:layout_height="wrap_content" android:src="@drawable/ic_launcher"
-        android:background="@url/http://img.pconline.com.cn/images/upload/upc/tx/photoblog/1107/24/c3/8430239_8430239_1311504206062_mthumb.jpg"
+        android:layout_height="wrap_content"  
+        android:background="@url/http://img.taopic.com/uploads/allimg/111225/9115-11122514225810.jpg"
+        />
+	<ImageView 
+        android:layout_width="fill_parent"  android:layout_gravity="center"
+        android:layout_height="wrap_content"  
+        android:background="@url/http://jixieshi999.github.io/ilife/images/BigLogo.jpg"
         />
     <!-- <com.juahya.guis.JTextView  android:layout_width="wrap_content" android:gravity="right" android:layout_gravity="center"
         android:layout_height="wrap_content"  
