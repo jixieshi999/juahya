@@ -31,6 +31,7 @@ you can use juahya to prase your custom layout xml file from internet,sdcard,sql
         2.config you IFxxx to com.xml.inflate.factory.IFLalterSImpleLinearLayoutFactory
         3.change your xml layout you can  see some of the things juahya used in his magic tricks
 eg file [test.xml](jixieshi999.github.io/ilife/juahya/test.xml)
+<br>http://jixieshi999.github.io/ilife/juahya/test.xml
 ###
     <TextView  android:layout_weight="1"
             android:layout_width="wrap_content" android:background="#e2e2c2"
