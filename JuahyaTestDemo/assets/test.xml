@@ -60,7 +60,12 @@
         android:layout_height="wrap_content"  
         juahya:attrKey="action_tablename" juahya:attrDescription="会员采集" juahya:attrType="member_info"
         />
-	
+	<com.juahya.guis.JTextView  android:layout_width="wrap_content" android:gravity="right" android:layout_gravity="center"
+        android:layout_height="40"  
+        juahya:attrKey="action_link"   juahya:attrType="test11.xml"
+        juahya:attrDescription="123311" 
+        android:id="123311" 
+        />
     <TextView  
         android:layout_width="wrap_content" 
         android:layout_height="wrap_content"  

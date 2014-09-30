@@ -151,5 +151,9 @@ public class PostJuahyaActivity extends JuahyaActivity {
 			postData(saveData);
 		}}).start();
 		}
+	@Override
+	public void onStartLink(String name) {
+		
+	}
 	
 }

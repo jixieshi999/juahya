@@ -70,7 +70,8 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 						stack.add(view);
 						
 						if(view instanceof IJuahya){
-							onJuahyaLayoutInflate((IJuahya)view);
+							IJuahya tmp=(IJuahya)view;
+							onJuahyaLayoutInflate(tmp);
 							if(null!=mIJuahyaLayoutInflateListener){
 								mIJuahyaLayoutInflateListener.onJuahyaLayoutInflate((IJuahya)view);
 							}
@@ -103,6 +104,11 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 	}
 	@Override
 	public void onJuahyaLayoutInflate(IJuahya ijuahya) {
+		try{
+//			((View)ijuahya).setId(Integer.valueOf(ijuahya.getAttrType()));
+		}catch(Exception e){
+			Debug.dLog(e);
+		}
 	}
 
     public static void initImageLoader(Context context) {

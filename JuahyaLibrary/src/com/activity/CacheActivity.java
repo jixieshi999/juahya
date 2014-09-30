@@ -124,4 +124,10 @@ public class CacheActivity extends JuahyaActivity{
 		String sqlhead="replace into LogTable(collectHeadID,status,updatetime,logName) values(?,?,?,?)";
 		mDataProvider.execute(sqlhead, new String[]{headid,status,date,logname});
 	}
+
+	@Override
+	public void onStartLink(String name) {
+		// TODO Auto-generated method stub
+		
+	}
 }

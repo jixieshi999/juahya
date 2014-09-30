@@ -21,6 +21,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 	/**保存本地，然后上传数据*/
 	static String ATTRACTIONSAVE_UPLOAD="action_save_upload";
 	static String ATTRACTIONBACK="action_back";
+	static String ATTRACTIONLINK="action_link";
 	String ID_ACTIONSAVE;
 	String ID_ACTION_SAVE_UPLOAD;
 	String ID_ACTION_UPLOAD;
@@ -31,7 +32,8 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 
     DisplayImageOptions options;
 //    imageLoader.displayImage(item._field, img, options, animateFirstListener);
-    
+
+	ArrayList<JuahyaBean> JuahyaBeanList=new ArrayList<JuahyaBean>();
 	protected ArrayList<IJuahya> mIJuahyaList=new ArrayList<IJuahya>();
 	public ArrayList<IJuahya> getIJuahyaList() {
 		return mIJuahyaList;
@@ -130,7 +132,35 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 				}
 			});
 		}
+		for(final JuahyaBean bean:JuahyaBeanList){
+			int ids=Integer.valueOf(bean.tag);
+			View view = findViewById(ids);
+			if(null==view)continue;
+			view.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					onStartLink(bean.link);
+				}
+			});
+		}
 	}
+	public static class JuahyaBean{
+		public String link;
+		public String tag;
+		public String description;
+		public JuahyaBean(String link, String tag, String description) {
+			super();
+			this.link = link;
+			this.tag = tag;
+			this.description = description;
+		}
+		@Override
+		public String toString() {
+			return "JuahyaBean [link=" + link + ", tag=" + tag
+					+ ", description=" + description + "]";
+		}
+	}
+	public abstract void onStartLink(String name);
 	@Override
 	public void onJuahyaLayoutInflate(IJuahya ijuahya) {
 		if(ATTRACTIONSAVE.equals(ijuahya.getAttrKey())){
@@ -141,6 +171,10 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 			ID_ACTION_SAVE_UPLOAD=ijuahya.getAttrDescription();
 		}else if(ATTRACTIONUPLOAD.equals(ijuahya.getAttrKey())){
 			ID_ACTION_UPLOAD=ijuahya.getAttrDescription();
+		}else if(ATTRACTIONLINK.equals(ijuahya.getAttrKey())){
+			JuahyaBeanList.add(new JuahyaBean(ijuahya.getAttrType(),ijuahya.getAttrDescription(),  ""));
+//			ID_ACTIONLINK=;
+//			_ACTIONLINK=;
 		}else{
 			boolean exist=false;
 			for(IJuahya ij:mIJuahyaList){
@@ -158,6 +192,9 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 	protected void onDestroy() {
 		if(null!=mIJuahyaList){
 			mIJuahyaList.clear();
+		}
+		if(null!=JuahyaBeanList){
+			JuahyaBeanList.clear();
 		}
 		super.onDestroy();
 	}
