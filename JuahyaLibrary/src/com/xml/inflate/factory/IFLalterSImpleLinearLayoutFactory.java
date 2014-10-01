@@ -11,6 +11,7 @@ import com.xml.inflate.inflater.IFTextView;
 import com.xml.inflate.inflater.IFlateViewAdapter;
 import com.xml.inflate.inflater.juahya.IFJCheckBox;
 import com.xml.inflate.inflater.juahya.IFJEditText;
+import com.xml.inflate.inflater.juahya.IFJLinearlayout;
 import com.xml.inflate.inflater.juahya.IFJTextView;
 
 /**
@@ -30,6 +31,7 @@ public class IFLalterSImpleLinearLayoutFactory extends IFlaterBaseFactory{
 		list.add(new IFCheckBox());
 		list.add(new IFJCheckBox());
 		list.add(new IFRelativeLayout());
+		list.add(new IFJLinearlayout());
 	}
 	public static void addIFlateViewAdapter(IFlateViewAdapter ifl){
 		if(null==list)list=new ArrayList<IFlateViewAdapter>();

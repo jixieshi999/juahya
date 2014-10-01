@@ -7,8 +7,7 @@
     <TextView 
         android:layout_width="fill_parent" android:gravity="right" android:layout_gravity="center"
         android:layout_height="wrap_content" android:background="#e2e2e2"
-        android:text="abcssssssssssssss"  android:id="@+id/txt"
-         android:paddingTop="10dp" android:paddingBottom="10dp" 
+        android:text="abcssssssssssssss"   android:paddingBottom="10dp" 
         />
 	<ImageView 
         android:layout_width="fill_parent"  android:layout_gravity="center"

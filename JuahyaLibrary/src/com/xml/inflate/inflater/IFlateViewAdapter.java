@@ -3,7 +3,9 @@ package com.xml.inflate.inflater;
 import org.xmlpull.v1.XmlPullParser;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.android.apis.util.Debug;
+import com.android.juahya.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.xml.inflate.i.IBaseInflateInterface;
 import com.xml.inflate.tools.IFlaterTools;
 
@@ -101,12 +108,30 @@ public abstract class IFlateViewAdapter implements IBaseInflateInterface {
 	public String ATTRIBUTE_layout_centerVertical="layout_centerVertical";
 	//--------------------------------RelativeLayout-------------------------------------------//
 	
-	
+
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+    static DisplayImageOptions options;
+    
 	Context context;
 	public String imageuri=null;
 	@Override
 	public Context getContext() {
 		return context;
+	}
+
+
+	public IFlateViewAdapter() {
+		super();
+		if(null==options){
+			options = new DisplayImageOptions.Builder()
+			.showStubImage(R.drawable.ic_launcher)
+			.showImageForEmptyUri(R.drawable.ic_launcher)
+			.showImageOnFail(R.drawable.ic_launcher)
+			.cacheInMemory()
+			.cacheOnDisc()
+			.displayer(new RoundedBitmapDisplayer(2))
+			.build();
+		}
 	}
 
 
@@ -210,7 +235,7 @@ public abstract class IFlateViewAdapter implements IBaseInflateInterface {
 					layout_centerVertical="true".equals(attrValue);
 				}
 			}
-			Debug.dLog(" "+nameSpace+":"+attrName+"="+attrValue);
+//			Debug.dLog(" "+nameSpace+":"+attrName+"="+attrValue);
 			inflate(nameSpace, attrName, attrValue);
 		}
 		if(null!=paramParrent){
@@ -256,7 +281,7 @@ public abstract class IFlateViewAdapter implements IBaseInflateInterface {
 	public void onFinishLayout(View layout){
 		
 	}
-	public void onFinishIFlate(View layout){
+	public void onFinishIFlate(final View layout){
 		layout.setPadding(
 				paddingLeft==NONE_INT?0:paddingLeft, 
 				paddingTop==NONE_INT?0:paddingTop, 
@@ -266,6 +291,24 @@ public abstract class IFlateViewAdapter implements IBaseInflateInterface {
 		if(NONE_INT!=backgroundColor)layout.setBackgroundColor(backgroundColor);
 		if(NONE_INT!=background)layout.setBackgroundResource(background);
 		if(NONE_INT!=id)layout.setId(id);
+		if(null!=imageuri){
+			imageLoader.loadImage(imageuri, options, new SimpleImageLoadingListener(){
+
+				@Override
+				public void onLoadingComplete(String imageUri, View view,
+						Bitmap loadedImage, String filePath) {
+					try{
+						Debug.dLog("loadImage:"+filePath);
+						layout.setBackground(new BitmapDrawable(loadedImage));
+						layout.postInvalidate();
+					}catch(Exception e){
+						Debug.dLog(e);
+					}
+					super.onLoadingComplete(imageUri, view, loadedImage, filePath);
+				}
+				
+			});
+		}
 	}
 
 	@Override

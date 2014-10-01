@@ -155,5 +155,10 @@ public class PostJuahyaActivity extends JuahyaActivity {
 	public void onStartLink(String name) {
 		
 	}
+	@Override
+	public void onRefresh() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

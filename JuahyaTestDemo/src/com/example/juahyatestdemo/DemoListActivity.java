@@ -74,6 +74,10 @@ public class DemoListActivity extends PostJuahyaActivity {
 
 	@Override
 	public void onStartLink(String name) {
+		if(null==name||"".equals(name)){
+			return;
+		}
+		Debug.dLog("start activity:"+name);
 		Intent intent=new Intent(this,MainActivity.class);
 		intent.putExtra(IPARAM_NAME, name);
 		startActivity(intent);

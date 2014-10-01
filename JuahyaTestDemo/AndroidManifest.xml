@@ -14,10 +14,11 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="com.example.juahyatestdemo.MainActivity"
-            android:label="@string/app_name" >
+            android:name="com.example.juahyatestdemo.DemoListActivity" 
+             >
         </activity>
-        <activity android:name="com.example.juahyatestdemo.DemoListActivity" 
+        <activity 
+            android:name="com.example.juahyatestdemo.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
