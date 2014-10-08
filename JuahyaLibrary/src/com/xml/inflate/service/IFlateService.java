@@ -57,8 +57,8 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 				switch (eventType) {
 				case XmlPullParser.START_TAG:
 					String name=parser.getName();
-					Debug.dLog("start_tag depth:"+parser.getDepth());
-					Debug.dLog("start_tag name:"+parser.getName());
+//					Debug.dLog("start_tag depth:"+parser.getDepth());
+//					Debug.dLog("start_tag name:"+parser.getName());
 					inflateCur=mIFLalterSImpleFactory.createIFlater(name);
 					if(null!=inflateCur){
 						viewPre=stack.isEmpty()?null:stack.peek();
@@ -89,8 +89,8 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 					}
 					break;
 				case XmlPullParser.END_TAG:
-					Debug.dLog("end_tag name:"+parser.getName());
-					Debug.dLog("end_tag depth:"+parser.getDepth());
+//					Debug.dLog("end_tag name:"+parser.getName());
+//					Debug.dLog("end_tag depth:"+parser.getDepth());
 					stack.pop();
 					stackParamList.pop();
 					break;

@@ -2,8 +2,15 @@ package com.activity;
 
 import java.util.ArrayList;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -11,6 +18,7 @@ import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.xml.inflate.inflater.IJuahya;
 import com.xml.inflate.inflater.IJuahyaLayoutInflateListener;
 
+import android.view.animation.ScaleAnimation;
 
 public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayoutInflateListener{
 
@@ -40,6 +48,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 	}
 	/**格式化数据*/
 	abstract String fomatData();
+	abstract void onRefresh();
 	/**保存数据
 	 * @param str fomatData return */
 	abstract String saveData(String fomatData);
@@ -93,6 +102,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					animateClickView(v);
 					saveData(fomatData());
 				}
 			});
@@ -104,6 +114,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					animateClickView(v);
 //					finish();
 					onBackPressed();
 				}
@@ -116,6 +127,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					animateClickView(v);
 					uploadData(fomatData());
 				}
 			});
@@ -127,6 +139,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					animateClickView(v);
 //					saveData(fomatData());
 					uploadData(saveData(fomatData()));
 				}
@@ -139,6 +152,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					animateClickView(v);
 					onStartLink(bean.link);
 				}
 			});
@@ -187,6 +201,26 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 				mIJuahyaList.add(ijuahya);
 			}
 		}
+	}
+	private void animateClickView(View v) {
+        ScaleAnimation anim=new ScaleAnimation(1,100,1,100);
+        ScaleAnimation animation =new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f,   
+        		Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);   
+        		animation.setDuration(400);//设置动画持续时间   
+        v.startAnimation(animation);
+    }
+
+
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add("refresh");
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// 初始化同步
+		onRefresh();
+		return super.onOptionsItemSelected(item);
 	}
 	@Override
 	protected void onDestroy() {

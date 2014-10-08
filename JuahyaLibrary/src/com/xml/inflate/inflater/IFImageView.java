@@ -31,21 +31,9 @@ public class IFImageView extends IFlateViewAdapter {
 	public String ATTRIBUTE_SRC="src";
 
 	public int src=NONE_INT;
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
-    static DisplayImageOptions options;
     
     public IFImageView() {
 		super();
-		if(null==options){
-			options = new DisplayImageOptions.Builder()
-			.showStubImage(R.drawable.ic_launcher)
-			.showImageForEmptyUri(R.drawable.ic_launcher)
-			.showImageOnFail(R.drawable.ic_launcher)
-			.cacheInMemory()
-			.cacheOnDisc()
-			.displayer(new RoundedBitmapDisplayer(2))
-			.build();
-		}
 		if(null==animateFirstListener){
 			animateFirstListener = new AnimateFirstDisplayListener();
 		}

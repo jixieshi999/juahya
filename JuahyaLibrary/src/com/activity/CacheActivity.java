@@ -7,14 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.android.apis.util.DateUtil;
 import com.android.apis.util.Debug;
 import com.xml.inflate.inflater.IJuahya;
-import com.xml.inflate.inflater.IJuahyaLayoutInflateListener;
 
 
 /**save data to database cache*/
@@ -127,6 +125,12 @@ public class CacheActivity extends JuahyaActivity{
 
 	@Override
 	public void onStartLink(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onRefresh() {
 		// TODO Auto-generated method stub
 		
 	}

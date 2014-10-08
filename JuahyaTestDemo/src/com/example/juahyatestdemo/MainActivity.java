@@ -9,6 +9,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -32,6 +33,18 @@ public class MainActivity extends PostJuahyaActivity {
 	
 	
 	@Override
+	public void onRefresh() {
+		if(testLocal){
+			View view=test();
+//			view=null;
+			if(null!=view){
+				setContentView(view);
+			}
+		}else{
+			getNetStr(name);
+		}
+	}
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -41,7 +54,7 @@ public class MainActivity extends PostJuahyaActivity {
 		
 		name=getIntent().getStringExtra(IPARAM_NAME);
 		if(null==name||"".equals(name)){
-			name="test.xml";
+			name="demolist.xml";
 		}
 		
 		if(testLocal){
@@ -87,6 +100,17 @@ public class MainActivity extends PostJuahyaActivity {
 			}});
 	}
 
+	@Override
+	public void onStartLink(String name) {
+		if(null==name||"".equals(name)){
+			return;
+		}
+		Debug.dLog("start activity:"+name);
+		Intent intent=new Intent(this,MainActivity.class);
+		intent.putExtra(IPARAM_NAME, name);
+		startActivity(intent);
+		super.onStartLink(name);
+	}
 
 	View  testInflate(String str){
 		String Result="";
@@ -171,7 +195,7 @@ public class MainActivity extends PostJuahyaActivity {
 		    HttpResponse response = httpClient.execute(getMethod); //发起GET请求  
 //		    Debug.dLog("reponse:"+response.toString());
 		    result=EntityUtils.toString(response.getEntity(), "utf-8");
-		    Debug.dLog("reponse:"+result);
+//		    Debug.dLog("reponse:"+result);
 		    
 //		    Log.i(TAG, "resCode = " + response.getStatusLine().getStatusCode()); //获取响应码  
 //		    Log.i(TAG, "result = " + EntityUtils.toString(response.getEntity(), "utf-8"));//获取服务器响应内容  
