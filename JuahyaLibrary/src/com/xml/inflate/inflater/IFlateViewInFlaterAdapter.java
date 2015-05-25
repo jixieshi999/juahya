@@ -275,6 +275,8 @@ public abstract class IFlateViewInFlaterAdapter implements IBaseInflateInterface
 				if(layout_centerHorizontal)relativelayoutparam.addRule(RelativeLayout.CENTER_HORIZONTAL);
 				if(layout_centerInParent)relativelayoutparam.addRule(RelativeLayout.CENTER_IN_PARENT);
 				this.paramParrent=relativelayoutparam;
+			}else {
+				this.paramParrent=paramParrent;
 			}
 		}
 		return new View(context);

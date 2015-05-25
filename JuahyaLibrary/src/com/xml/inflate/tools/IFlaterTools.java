@@ -130,13 +130,13 @@ public  class IFlaterTools   {
 		return result;
 	}
 	public static int px2dip(Context context, float pxValue){
-		int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-				pxValue, context.getResources().getDisplayMetrics());
-//		px =(int) (pxValue * (context.getResources().getDisplayMetrics().density/160));
-		return px;
-//		if(NONE_FLOAT==scale){
-//			scale= context.getResources().getDisplayMetrics().density; 
-//		}
-//	    return (int)(pxValue / scale + 0.5f); 
+//		int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+//				pxValue, context.getResources().getDisplayMetrics());
+////		px =(int) (pxValue * (context.getResources().getDisplayMetrics().density/160));
+//		return px;
+		if(NONE_FLOAT==scale){
+			scale= context.getResources().getDisplayMetrics().density; 
+		}
+	    return (int)(pxValue / scale + 0.5f); 
 	} 
 }

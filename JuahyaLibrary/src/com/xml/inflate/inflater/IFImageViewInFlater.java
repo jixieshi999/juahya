@@ -31,6 +31,7 @@ public class IFImageViewInFlater extends IJuahyaFlateViewInFlaterAdapter {
 	public String ATTRIBUTE_SRC="src";
 
 	public int src=NONE_INT;
+	public String imageSrcuri=null;
     
     public IFImageViewInFlater() {
 		super();
@@ -75,8 +76,8 @@ public class IFImageViewInFlater extends IJuahyaFlateViewInFlaterAdapter {
 	@Override
 	public void onFinishLayout(View lay) {
 		ImageView layout = (ImageView)lay;
-		if(null!=imageuri){
-			imageLoader.displayImage(imageuri, layout, options, animateFirstListener);
+		if(null!=imageSrcuri){
+			imageLoader.displayImage(imageSrcuri, layout, options, animateFirstListener);
 		}
 //		super.onFinishLayout(layout);
 	}
@@ -86,11 +87,26 @@ public class IFImageViewInFlater extends IJuahyaFlateViewInFlaterAdapter {
 		if(NAMESPACE_ANDROID.equals(nameSpace)){
 			if(ATTRIBUTE_SRC.equals(attrName)){
 //				src=inflateDrawable(attrValue);
-				src=IFlaterTools.getDrawableLocal(attrValue,getContext());
+//				src=IFlaterTools.getDrawableLocal(attrValue,getContext());
+				if(attrValue.startsWith("#")){
+					src=IFlaterTools.getBackgroundColor(attrValue,getContext());
+				}else if(attrValue.startsWith("@url/")){
+					imageSrcuri=IFlaterTools.getDrawableInternet(attrValue);
+				}else{
+					src=IFlaterTools.getDrawableLocal(attrValue,getContext());
+				}
+			
 			}
 		}else{
 			if((NAMESPACE_ANDROID+":"+ATTRIBUTE_SRC).equals(attrName)){
-				src=IFlaterTools.getDrawableLocal(attrValue,getContext());
+//				src=IFlaterTools.getDrawableLocal(attrValue,getContext());
+				if(attrValue.startsWith("#")){
+					src=IFlaterTools.getBackgroundColor(attrValue,getContext());
+				}else if(attrValue.startsWith("@url/")){
+					imageSrcuri=IFlaterTools.getDrawableInternet(attrValue);
+				}else{
+					src=IFlaterTools.getDrawableLocal(attrValue,getContext());
+				}
 			}
 		}
 		return false;
