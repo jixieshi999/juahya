@@ -4,6 +4,7 @@ import org.xmlpull.v1.XmlPullParser;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,8 @@ import com.xml.inflate.i.IBaseInflateInterface;
 /**
  * all view inflater should extends IFalteViewAdapter
  * <p> base inflater class
- * @see com.xml.inflate.inflater.IFTextView
- * @see com.xml.inflate.inflater.IFLinearLayout
+ * @see com.xml.inflate.inflater.IFTextViewInFlater
+ * @see com.xml.inflate.inflater.IFLinearLayoutInFlater
  * */
 public  class IFlaterTools   {
 
@@ -129,9 +130,13 @@ public  class IFlaterTools   {
 		return result;
 	}
 	public static int px2dip(Context context, float pxValue){
-		if(NONE_FLOAT==scale){
-			scale= context.getResources().getDisplayMetrics().density; 
-		}
-	    return (int)(pxValue / scale + 0.5f); 
+		int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+				pxValue, context.getResources().getDisplayMetrics());
+//		px =(int) (pxValue * (context.getResources().getDisplayMetrics().density/160));
+		return px;
+//		if(NONE_FLOAT==scale){
+//			scale= context.getResources().getDisplayMetrics().density; 
+//		}
+//	    return (int)(pxValue / scale + 0.5f); 
 	} 
 }

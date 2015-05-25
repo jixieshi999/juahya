@@ -35,6 +35,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 	String ID_ACTION_UPLOAD;
 	String ID_ACTIONBACK;
 	
+	View baseView;
 
     protected ImageLoader imageLoader = ImageLoader.getInstance();
 
@@ -85,19 +86,32 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 	@Override
 	public void setContentView(View view, LayoutParams params) {
 		super.setContentView(view, params);
+		baseView=view;
 		initOnSaveAction();
 	}
 
 	@Override
 	public void setContentView(View view) {
 		super.setContentView(view);
+		baseView=view;
 		initOnSaveAction();
 	}
-
+	/**findviewbyid or by tag*/
+	View getViewsByJuahyaTag(String tag){
+		View view=null;
+		if(null!=baseView){
+			view = baseView.findViewWithTag(tag.toString());
+		}else{
+		}
+		if(view ==null){
+			int ids=Integer.valueOf(tag);
+			view = findViewById(ids);
+		}
+		return view;
+	}
 	protected void initOnSaveAction() {
 		if(null!=ID_ACTIONSAVE){
-			int ids=Integer.valueOf(ID_ACTIONSAVE);
-			View view = findViewById(ids);
+			View view = getViewsByJuahyaTag(ID_ACTIONSAVE);
 			if(null==view)return;
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -108,8 +122,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 			});
 		}
 		if(null!=ID_ACTIONBACK){
-			int ids=Integer.valueOf(ID_ACTIONBACK);
-			View view = findViewById(ids);
+			View view = getViewsByJuahyaTag(ID_ACTIONBACK);
 			if(null==view)return;
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -121,8 +134,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 			});
 		}
 		if(null!=ID_ACTION_UPLOAD){
-			int ids=Integer.valueOf(ID_ACTION_UPLOAD);
-			View view = findViewById(ids);
+			View view = getViewsByJuahyaTag(ID_ACTION_UPLOAD);
 			if(null==view)return;
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -132,9 +144,9 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 				}
 			});
 		}
+		
 		if(null!=ID_ACTION_SAVE_UPLOAD){
-			int ids=Integer.valueOf(ID_ACTION_SAVE_UPLOAD);
-			View view = findViewById(ids);
+			View view = getViewsByJuahyaTag(ID_ACTION_SAVE_UPLOAD);
 			if(null==view)return;
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -146,8 +158,7 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 			});
 		}
 		for(final JuahyaBean bean:JuahyaBeanList){
-			int ids=Integer.valueOf(bean.tag);
-			View view = findViewById(ids);
+			View view = getViewsByJuahyaTag(bean.tag);
 			if(null==view)continue;
 			view.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -177,6 +188,9 @@ public abstract class JuahyaActivity extends BaseActivity implements IJuahyaLayo
 	public abstract void onStartLink(String name);
 	@Override
 	public void onJuahyaLayoutInflate(IJuahya ijuahya) {
+		if(null==ijuahya||null==ijuahya.getAttrKey()||"".equals(ijuahya.getAttrKey().trim())){
+			return;
+		}
 		if(ATTRACTIONSAVE.equals(ijuahya.getAttrKey())){
 			ID_ACTIONSAVE=ijuahya.getAttrDescription();
 		}else if(ATTRACTIONBACK.equals(ijuahya.getAttrKey())){

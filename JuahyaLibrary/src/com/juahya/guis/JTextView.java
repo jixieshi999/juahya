@@ -9,7 +9,7 @@ import com.xml.inflate.inflater.IJuahya;
 /**
  * 能够被解析成Juahya的TextView
  * @see IJuahya juahya接口
- * @see com.xml.inflate.inflater.juahya.IFJTextView    
+ * @see com.xml.inflate.inflater.juahya.IFJTextViewInFlater    
  * */
 public class JTextView extends TextView implements IJuahya{
 

@@ -14,7 +14,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.xml.inflate.factory.IFLalterSImpleLinearLayoutFactory;
 import com.xml.inflate.factory.IFlateInteface;
-import com.xml.inflate.inflater.IFlateViewAdapter;
+import com.xml.inflate.inflater.IJuahyaFlateViewInFlaterAdapter;
 import com.xml.inflate.inflater.IJuahya;
 import com.xml.inflate.inflater.IJuahyaLayoutInflateListener;
 
@@ -49,7 +49,7 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 			int allDeep=0;
 			int currentDeep=0;
 			View viewPre=null;
-			IFlateViewAdapter inflateCur;
+			IJuahyaFlateViewInFlaterAdapter inflateCur;
 			//¶ÑÕ»½âÎö
 			Stack<View> stack=new Stack<View>();
 			Stack<LayoutParams> stackParamList=new Stack<LayoutParams>();
@@ -64,7 +64,7 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 						viewPre=stack.isEmpty()?null:stack.peek();
 						parrentParam=stackParamList.isEmpty()?null:stackParamList.peek();
 						view=inflateCur.inflate(parser, context,parrentParam);
-						inflateCur.onFinishIFlate(view);
+						inflateCur.finishIFlate(view);
 						param=inflateCur.getLayoutParams();
 						stackParamList.add(param);
 						stack.add(view);
@@ -85,7 +85,7 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 					}else{
 //						((ViewGroup)layout).addView(view);
 						((ViewGroup)viewPre).addView(view,inflateCur.getParrentLayoutParams());
-						inflateCur.onFinishLayout(view);
+						inflateCur.finishLayout(view);
 					}
 					break;
 				case XmlPullParser.END_TAG:
@@ -105,7 +105,12 @@ public class IFlateService implements IIFlate,IJuahyaLayoutInflateListener{
 	@Override
 	public void onJuahyaLayoutInflate(IJuahya ijuahya) {
 		try{
+			if(null==ijuahya||null==ijuahya.getAttrType()||"".equals(ijuahya.getAttrType().trim())){
+				return;
+			}
 //			((View)ijuahya).setId(Integer.valueOf(ijuahya.getAttrType()));
+			((View)ijuahya).setTag(ijuahya.getAttrType().toString());
+//			((View)ijuahya).setTag("juahya", ijuahya.getAttrType().toString());
 		}catch(Exception e){
 			Debug.dLog(e);
 		}

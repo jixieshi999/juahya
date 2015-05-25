@@ -10,4 +10,8 @@ public interface IJuahya {
 	String getAttrKey();
 	String getAttrDescription();
 	String getAttrType();
+
+	  void setAttrType(String attrType) ;
+	  void setAttrKey(String attrKey) ;
+	  void setAttrDescription(String attrDescription);
 }
