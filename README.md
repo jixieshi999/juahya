@@ -40,8 +40,8 @@ you can use juahya to prase your custom layout xml stream ,where its come from i
         2.config you IFxxx to com.xml.inflate.factory.IFLalterSImpleLinearLayoutFactory
         3.change your xml layout you can  see some of the things juahya used in his magic tricks
         
-its easy to use
-###
+##Usage
+
 ```
 		IFlateServicePoxy service = new IFlateServicePoxy();
 		service.setIJuahyaLayoutInflateListener(DemoListActivity.this);
