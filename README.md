@@ -86,5 +86,7 @@ Acknowledgements
 
 
 ======
- 
+ps :
+初版完成之后，联想了下，通过juahya可以与webservice或者ajax与后台交互做简单数据的采集<br/>
+感觉像是一个简单的浏览器模型。。。
 
