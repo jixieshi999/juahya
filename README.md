@@ -24,7 +24,7 @@ version 1.1 2015-05-26
 
 what can juahya do ?
 ======
-you can use juahya to prase your custom layout xml stream ,where its come from internet,sdcard,sqlite ...<br />
+you can use juahya to parse  your custom layout xml stream ,where its come from internet,sdcard,sqlite ...<br />
 你可以使用juahya来解析出view来，数据类型可以是string，stream，数据来源可以是web,sqlite,sdcard ...<br />
 ###
     how to build your custom view inflater
@@ -86,5 +86,5 @@ Acknowledgements
 
 
 ======
-ps : after finish it i thought it is like a html praser lol<br />
+ 
 
