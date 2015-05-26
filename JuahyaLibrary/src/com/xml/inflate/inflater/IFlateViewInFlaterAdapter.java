@@ -311,7 +311,8 @@ public abstract class IFlateViewInFlaterAdapter implements IBaseInflateInterface
 						Bitmap loadedImage, String filePath) {
 					try{
 						Debug.dLog("loadImage:"+filePath);
-						layout.setBackground(new BitmapDrawable(loadedImage));
+//						layout.setBackground(new BitmapDrawable(loadedImage));
+						layout.setBackgroundDrawable(new BitmapDrawable(loadedImage));
 						layout.postInvalidate();
 					}catch(Exception e){
 						Debug.dLog(e);
