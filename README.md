@@ -13,9 +13,15 @@ version 1.0 2014-05-22
     support android layout   
          LinearLayout－－》IFLinearLayout
          RelativeLayout－－》IFRelativeLayout
+
+
+## Demo
+<p align="center" >
+<img src="http://jixieshi999.github.io/ilife/images/juahyademo.gif" width="180" height="320"/>
+</p>
+
 what can juahya do ?
 ======
-
 you can use juahya to prase your custom layout xml file from internet,sdcard,sqlite ...<br />
 ###
     how to build your custom view inflater
