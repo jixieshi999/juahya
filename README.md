@@ -1,18 +1,20 @@
 juahya
 ======
 
-juahya is android real time xml layout inflater<br />
+Juahya is android real time xml layout inflater<br />
+Juahya 是一个android的实时解析xml转化为view的解析器<br />
 
-version 1.0 2014-05-22
+version 1.1 2015-05-26
 ###     
     support android view
-         CheckBox －－》IFCheckBox
-         EditText －－》IFEditText
-         ImageView－－》IFImageView
-         TextView－－》IFTextView
+         CheckBox －－》IFCheckBoxinflater
+         EditText －－》IFEditTextinflater
+         ImageView－－》IFImageViewinflater
+         TextView－－》IFTextViewinflater
     support android layout   
          LinearLayout－－》IFLinearLayout
          RelativeLayout－－》IFRelativeLayout
+         ScrollView－－》IFScrollViewLayout
 
 
 ## Demo
@@ -22,7 +24,8 @@ version 1.0 2014-05-22
 
 what can juahya do ?
 ======
-you can use juahya to prase your custom layout xml file from internet,sdcard,sqlite ...<br />
+you can use juahya to prase your custom layout xml stream ,where its come from internet,sdcard,sqlite ...<br />
+你可以使用juahya来解析出view来，数据类型可以是string，stream，数据来源可以是web,sqlite,sdcard ...<br />
 ###
     how to build your custom view inflater
         1.add IFXXX on com.xml.inflate.inflater
@@ -36,6 +39,18 @@ you can use juahya to prase your custom layout xml file from internet,sdcard,sql
             IFJxxx is extends IFXXX and add juahya ATTRIBUTE
         2.config you IFxxx to com.xml.inflate.factory.IFLalterSImpleLinearLayoutFactory
         3.change your xml layout you can  see some of the things juahya used in his magic tricks
+        
+its easy to use
+###
+```
+		IFlateServicePoxy service = new IFlateServicePoxy();
+		service.setIJuahyaLayoutInflateListener(DemoListActivity.this);
+		String result="<LinearLayout android:orientation=\"vertical\" "
+					+" android:layout_width=\"fill_parent\" android:layout_height=\"fill_parent\" "
+					+"</LinearLayout>";
+		View view= service.inflate(result, DemoListActivity.this);
+		setContentView(view);
+```		
 eg file [test.xml](jixieshi999.github.io/ilife/juahya/test.xml)
 <br>http://jixieshi999.github.io/ilife/juahya/test.xml
 ###
